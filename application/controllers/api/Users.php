@@ -149,7 +149,7 @@ class Users extends RestController {
 	}
 
 	/*
-		Update Data User
+		Delete Data User
 
 		DELETE http://baseurl/codeigniter3-rest-api/api/users/{id}
 	*/
