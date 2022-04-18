@@ -29,13 +29,13 @@ class Users extends RestController {
 
 			if(empty($users)){
 				$this->response([
-					'status' => FALSE,
+					'status' => false,
 					'msg' => 'User not found.',
 					'data' => [],
 				], self::HTTP_NOT_FOUND);
 			} else {
 				$this->response([
-					'status' => TRUE,
+					'status' => true,
 					'msg' => "Get user by User ID {$id}.",
 					'data' => $users[0],
 				], self::HTTP_OK);
@@ -45,13 +45,13 @@ class Users extends RestController {
 
 			if(empty($users)){
 				$this->response([
-					'status' => FALSE,
+					'status' => false,
 					'msg' => 'Users is empty.',
 					'data' => [],
 				], self::HTTP_NOT_FOUND);
 			} else { 
 				$this->response([
-					'status' => TRUE,
+					'status' => true,
 					'msg' => 'List all users.',
 					'data' => $users,
 				], self::HTTP_OK);
@@ -80,7 +80,7 @@ class Users extends RestController {
 		// Check Email
 		if($this->check_email_is_exists($email)) {
 			$this->response([
-				'status' => true,
+				'status' => false,
 				'msg' => 'Email already exists.'
 			], self::HTTP_BAD_REQUEST);
 		}
@@ -101,7 +101,7 @@ class Users extends RestController {
 			], self::HTTP_CREATED);
 		} else {
 			$this->response([
-				'status' => true,
+				'status' => false,
 				'msg' => 'Failed to save user.'
 			], self::HTTP_INTERNAL_ERROR);
 		}
@@ -142,7 +142,7 @@ class Users extends RestController {
 			], self::HTTP_CREATED);
 		} else {
 			$this->response([
-				'status' => true,
+				'status' => false,
 				'msg' => 'Failed to update user.'
 			], self::HTTP_INTERNAL_ERROR);
 		}
@@ -162,13 +162,13 @@ class Users extends RestController {
 			// Delete User By ID and limit 1 (for safety single delete);
 			$this->db->delete('users', ['id', $id], 1);
 			$this->response([
-				'status' => TRUE,
+				'status' => true,
 				'msg' => 'User has been deleted.',
 				'data' => [],
 			], self::HTTP_OK);
 		} else {
 			$this->response([
-				'status' => FALSE,
+				'status' => false,
 				'msg' => 'User not found.',
 				'data' => [],
 			], self::HTTP_NOT_FOUND);
