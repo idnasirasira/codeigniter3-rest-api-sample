@@ -18,7 +18,6 @@ class Users extends RestController {
 		By ID
 		- GET http://baseurl/codeigniter3-rest-api/api/users/{id}
 	*/
-
     public function index_get($id = 0)
     {
 		if($id) {
@@ -108,7 +107,6 @@ class Users extends RestController {
 		}
 	}
 
-
 	/*
 		Update Data User
 
@@ -150,6 +148,11 @@ class Users extends RestController {
 		}
 	}
 
+	/*
+		Update Data User
+
+		DELETE http://baseurl/codeigniter3-rest-api/api/users/{id}
+	*/
 	public function index_delete($id)
 	{
 		$users = $this->db->where('id', $id)->get('users', 1)->result();
